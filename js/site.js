@@ -1,6 +1,6 @@
 // Start function
 function getValues() {
-    // Get values form the inputs
+    // Get values from the inputs
     let fizzValue = document.getElementById("fizz-value").value;
     let buzzValue = document.getElementById("buzz-value").value;
 
