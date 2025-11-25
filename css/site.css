@@ -69,6 +69,18 @@ main>.container {
     color: var(--secondary-color);
 }
 
+.fizz {
+    color: #24A38E;
+}
+
+.buzz {
+    color: var(--secondary-color);
+}
+
+.fizzbuzz {
+    color: red;
+}
+
 code[class*="language-"], pre[class*="language-"] {
     white-space: pre-wrap;
     word-break: break-all;

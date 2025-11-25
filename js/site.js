@@ -45,17 +45,40 @@ function fizzBuzz(fizzValue, buzzValue){
 }
 
 // Loop over the array and create a table row for each item
-function displayData(fbArray){
+function displayData(fbArray) {
+    // Number of columns per row
+    const columnsPerRow = 10;
     let templateRows = "";
 
-    // Loop over the array
-    fbArray.forEach(element => {
-        if (element.isInteger) {
-            templateRows += `<tr><td>${element}</td></tr>`;
-        } else {
-            templateRows += `<tr><td><strong>${element}</strong></td></tr>`;
+    for (let i = 0; i < fbArray.length; i += columnsPerRow) {
+        // Start a row
+        templateRows += "<tr>";
+
+        // Add cells for this row
+        for (let j = 0; j < columnsPerRow; j++) {
+            const element = fbArray[i + j];
+
+             // Stop if no more elements
+            if (element === undefined) {
+                break;
+            }
+
+            let cellContent = element;
+
+            if (element === "Fizz") {
+                cellContent = `<strong class="fizz">Fizz</strong>`;
+            } else if (element === "Buzz") {
+                cellContent = `<strong class="buzz">Buzz</strong>`;
+            } else if (element === "FizzBuzz") {
+                cellContent = `<strong class="fizzbuzz">FizzBuzz</strong>`;
+            }
+
+            // Close the row
+            templateRows += `<td>${cellContent}</td>`;
         }
-    });
+
+        templateRows += "</tr>";
+    }
 
     document.getElementById("results").innerHTML = templateRows;
 }

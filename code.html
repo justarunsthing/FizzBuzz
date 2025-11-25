@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top theme-color">
             <div class="container-fluid">
                 <a class="navbar-brand text-light" disabled>
-                    <img src="img/arunpun-home-logo.png" class="d-inline-block align-text-top" alt="Arun Pun Logo" width="30" height="24">
+                    <img src="img/arunpun-home-logo.png" class="d-inline-block align-text-top" alt="Arun Pun Logo" width="30" height="30">
                     FizzBuzz
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -100,17 +100,39 @@
                                 }
 
                                 // Loop over the array and create a table row for each item
-                                function displayData(fbArray){
+                                function displayData(fbArray) {
+                                    // Number of columns per row
+                                    const columnsPerRow = 10; 
                                     let templateRows = "";
 
-                                    // Loop over the array
-                                    fbArray.forEach(element => {
-                                        if (element.isInteger) {
-                                            templateRows += `<tr><td>${element}</td></tr>`;
-                                        } else {
-                                            templateRows += `<tr><td><strong>${element}</strong></td></tr>`;
+                                    for (let i = 0; i &lt; fbArray.length; i += columnsPerRow) {
+                                        // Start a row
+                                        templateRows += "&lt;tr&gt;"; 
+
+                                        for (let j = 0; j &lt; columnsPerRow; j++) {
+                                            const element = fbArray[i + j];
+
+                                            // Stop if no more elements
+                                            if (element === undefined) {
+                                                break;
+                                            }
+
+                                            let cellContent = element;
+
+                                            if (element === "Fizz") {
+                                                cellContent = "&lt;strong class=&quot;fizz&quot;&gt;Fizz&lt;/strong&gt;";
+                                            } else if (element === "Buzz") {
+                                                cellContent = "&lt;strong class=&quot;buzz&quot;&gt;Buzz&lt;/strong&gt;";
+                                            } else if (element === "FizzBuzz") {
+                                                cellContent = "&lt;strong class=&quot;fizzbuzz&quot;&gt;FizzBuzz&lt;/strong&gt;";
+                                            }
+
+                                            templateRows += "&lt;td&gt;" + cellContent + "&lt;/td&gt;";
                                         }
-                                    });
+
+                                        // Close the row
+                                        templateRows += "&lt;/tr&gt;"; 
+                                    }
 
                                     document.getElementById("results").innerHTML = templateRows;
                                 }
