@@ -59,3 +59,7 @@ function displayData(fbArray){
 
     document.getElementById("results").innerHTML = templateRows;
 }
+
+// Set date
+const currentYear = new Date().getFullYear();
+document.getElementById("year").textContent = `©${currentYear}`;
